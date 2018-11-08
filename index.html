@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Anthony Ionno" />
+
+
+<title>When does Halloween start (and end) exactly?</title>
+
+<script src="2018_11_04-halloween_post_files/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="2018_11_04-halloween_post_files/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="2018_11_04-halloween_post_files/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="2018_11_04-halloween_post_files/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="2018_11_04-halloween_post_files/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="2018_11_04-halloween_post_files/navigation-1.1/tabsets.js"></script>
+<script src="2018_11_04-halloween_post_files/navigation-1.1/codefolding.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { font-weight: bold; } /* Keyword */
+code > span.dt { text-decoration: underline; } /* DataType */
+code > span.co { font-style: italic; } /* Comment */
+code > span.al { font-weight: bold; } /* Alert */
+code > span.er { font-weight: bold; } /* Error */
+code > span.wa { font-style: italic; } /* Warning */
+code > span.cf { font-weight: bold; } /* ControlFlow */
+code > span.pp { font-weight: bold; } /* Preprocessor */
+code > span.do { font-style: italic; } /* Documentation */
+code > span.an { font-style: italic; } /* Annotation */
+code > span.cv { font-style: italic; } /* CommentVar */
+code > span.in { font-style: italic; } /* Information */
+div.sourceCode {
+  overflow-x: visible;
+}
+</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">When does Halloween start (and end) exactly?</h1>
+<h3 class="subtitle"><em>Observing the total number of Halloween visits to my house in 2018</em></h3>
+<h4 class="author"><em>Anthony Ionno</em></h4>
+<h4 class="date"><em>November 7, 2018</em></h4>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#summary">Summary</a></li>
+<li><a href="#r-libraries">R libraries</a></li>
+<li><a href="#preprocessing">Preprocessing</a></li>
+<li><a href="#analysis">Analysis</a></li>
+</ul>
+</div>
+
+<style>
+body {
+    font-size: 16px;
+}
+
+</style>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>I thought I would run a fun experiment while my wife handed out candy this year and see when trick-or-treaters would start coming by our house for candy. It seems that prime candy-time starts around 6 and ends around 9. 7:00 pm is peak trick-or-treating time in my neighbourhood and I observed an increase in participant age as the night progressed.</p>
+<p>I also thought it would be fun to record the group sizes that arrived at my front-door during this period. Group sizes of 2 were the most common, followed by 1 and then 3. I did have two large groups of 7 and 8 that came early on but nothing larger than that.</p>
+</div>
+<div id="r-libraries" class="section level2">
+<h2>R libraries</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse);<span class="kw">library</span>(extrafont);<span class="kw">library</span>(extrafontdb);<span class="kw">library</span>(magrittr)</code></pre></div>
+</div>
+<div id="preprocessing" class="section level2">
+<h2>Preprocessing</h2>
+<p>None whatsoever, I simply inputted the data from my notepad into a spreadsheet and fed that into R.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Reading in data</span>
+df &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;2018-11-04_halloween data.csv&quot;</span>)
+<span class="co"># Creating custom plotting theme</span>
+theme_ai &lt;-<span class="st"> </span><span class="cf">function</span>(){
+  <span class="kw">theme_minimal</span>() <span class="op">+</span>
+<span class="st">    </span><span class="kw">theme</span>(
+      <span class="dt">text =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;gray25&quot;</span>),
+      <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">22</span>),
+      <span class="dt">plot.subtitle =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">20</span>),
+      <span class="dt">axis.text =</span> <span class="kw">element_text</span>(<span class="dt">size=</span><span class="dv">18</span>, <span class="dt">color =</span> <span class="st">&quot;gray25&quot;</span>),
+      <span class="dt">axis.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">20</span>),
+      <span class="dt">plot.caption =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;gray30&quot;</span>, <span class="dt">size=</span><span class="dv">16</span>),
+      <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;gray95&quot;</span>),
+      <span class="dt">plot.margin =</span> <span class="kw">unit</span>(<span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">10</span>), <span class="dt">units =</span> <span class="st">&quot;mm&quot;</span>),
+      <span class="co">#axis.line = element_line(color=&quot;gray50&quot;)</span>
+      <span class="dt">axis.ticks.x =</span> <span class="kw">element_line</span>(<span class="dt">color=</span><span class="st">&quot;gray35&quot;</span>),
+      <span class="dt">panel.grid.major.y =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;gray80&quot;</span>),
+      <span class="dt">legend.position =</span> <span class="st">&quot;none&quot;</span>)
+  
+}</code></pre></div>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">temp&lt;-<span class="st"> </span>df <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">group_by</span>(Hour) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">summarise</span>(<span class="dt">num_tt =</span> <span class="kw">sum</span>(Count))
+<span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> Hour, <span class="dt">y =</span> (..count..)<span class="op">/</span>(..count..)<span class="op">*</span>temp<span class="op">$</span>num_tt), <span class="dt">fill=</span><span class="st">&#39;gray65&#39;</span>, <span class="dt">color =</span> <span class="st">&quot;gray45&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ai</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Total number of trick-or-treat visitors broken down by hour&quot;</span>,
+       <span class="dt">x =</span> <span class="st">&quot;Hour of the day&quot;</span>,
+       <span class="dt">y =</span> <span class="st">&quot;Total count&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>))</code></pre></div>
+<p><img src="2018_11_04-halloween_post_files/figure-html/unnamed-chunk-3-1.png" width="1440" /></p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">ggplot</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">data =</span> df, <span class="kw">aes</span>(<span class="dt">x =</span> Count, <span class="dt">y =</span> ..count..), <span class="dt">fill=</span><span class="st">&#39;gray65&#39;</span>, <span class="dt">color =</span> <span class="st">&quot;gray45&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">theme_ai</span>()<span class="op">+</span>
+<span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Total number of trick-or-treaters broken down by size of group&quot;</span>,
+       <span class="dt">x =</span> <span class="st">&quot;Group size&quot;</span>,
+       <span class="dt">y =</span> <span class="st">&quot;Total count&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">scale_x_continuous</span>(<span class="dt">breaks =</span> <span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">8</span>))</code></pre></div>
+<p><img src="2018_11_04-halloween_post_files/figure-html/unnamed-chunk-4-1.png" width="1440" /></p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
